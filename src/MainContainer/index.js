@@ -4,6 +4,7 @@
 
 import React from 'react'
 import DogForm from './DogForm'
+import PuppyList from './PuppyList'
 
 class MainContainer extends React.Component {
 
@@ -33,6 +34,9 @@ class MainContainer extends React.Component {
         <button onClick={this.props.logout}> Logout </button>
 
         <DogForm addDog={this.addDog} />
+        <PuppyList dogs={this.state.dogs} />
+
+        
       </div>
     )
 
