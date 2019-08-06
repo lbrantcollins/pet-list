@@ -16,19 +16,24 @@ class Login extends React.Component {
   }
 
   handleUsernameChange = (event) => {
-    console.log("handleUsernameChange");
-    console.log(event.currentTarget.value);
+    // console.log("handleUsernameChange");
+    // console.log(event.currentTarget.value);
     this.setState({
       username: event.currentTarget.value
     })
     /// this is not a good place to use console.log to check something in state
+  }
+  handlePasswordChange = (event) => {
+    this.setState({
+      password: event.currentTarget.value
+    })
   }
 
   render() {
     // this is a good place to check that something is in state
     console.log("this.state in render() in Login");
     console.log(this.state);
-    return(
+    return (
       <div>
         <h2>Login</h2>
         <form>
@@ -45,6 +50,7 @@ class Login extends React.Component {
             name="password" 
             value={this.state.password} 
             placeholder="password" 
+            onChange={this.handlePasswordChange}
           />
           <br />
           <button>Log in!</button>
