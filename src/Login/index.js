@@ -15,19 +15,17 @@ class Login extends React.Component {
     }
   }
 
-  handleUsernameChange = (event) => {
-    // console.log("handleUsernameChange");
-    // console.log(event.currentTarget.value);
+  /// we can use some newer JS to handle changes to multiple text inputs
+  handleChange = (event) => {
+    console.log(event.currentTarget.name);
+    // this is called COMPUTED PROPERTY NAMES syntax.  
+    // it's some fancy newish JS
     this.setState({
-      username: event.currentTarget.value
-    })
-    /// this is not a good place to use console.log to check something in state
-  }
-  handlePasswordChange = (event) => {
-    this.setState({
-      password: event.currentTarget.value
+      [event.currentTarget.name]: event.currentTarget.value
     })
   }
+
+
 
   render() {
     // this is a good place to check that something is in state
@@ -42,7 +40,7 @@ class Login extends React.Component {
             name="username" 
             value={this.state.username} 
             placeholder="username"
-            onChange={this.handleUsernameChange}
+            onChange={this.handleChange}
           />
           <br />
           <input 
@@ -50,7 +48,7 @@ class Login extends React.Component {
             name="password" 
             value={this.state.password} 
             placeholder="password" 
-            onChange={this.handlePasswordChange}
+            onChange={this.handleChange}
           />
           <br />
           <button>Log in!</button>
