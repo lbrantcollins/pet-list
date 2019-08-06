@@ -19,6 +19,11 @@ class DogForm extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.addDog(this.state)
+    this.setState({
+      name: '',
+      age: '',
+      breed: ''
+    })
   }
 
   render() {
