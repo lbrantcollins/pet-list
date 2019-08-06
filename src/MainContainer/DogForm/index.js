@@ -9,18 +9,23 @@ class DogForm extends React.Component {
       breed: ''
     }
   }
+  
   handleChange = (event) => {
     this.setState({
       [event.currentTarget.name]: event.currentTarget.value
     })
   }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.addDog(this.state)
+  }
+
   render() {
-    console.log("this.state in render() in DogForm");
-    console.log(this.state);
     return(
       <div>
         <h3>Add your dogs here, folks!</h3>
-        <form>
+        <form onSubmit={this.handleSubmit} >
           <input type="text" name="name" value={this.state.name} placeholder="Enter a name" onChange={this.handleChange} />
           <br />
           <input type="number" name="age" value={this.state.age} placeholder="Enter age" onChange={this.handleChange} />

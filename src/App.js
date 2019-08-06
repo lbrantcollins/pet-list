@@ -44,7 +44,7 @@ class App extends React.Component {
     console.log(this.state);
     return (
       <div className="App">
-        <h1>React Forms</h1>
+        
         { this.state.loggedIn ? null : <Login login={this.login} /> }
         { this.state.loggedIn ? <MainContainer logout={this.logout} username={this.state.username} /> : null }
       </div>

@@ -7,18 +7,32 @@ import DogForm from './DogForm'
 
 class MainContainer extends React.Component {
 
-  // render a button below the div after the h3 that logs 
-  // the user out by calling the logout function from props
+  constructor() {
+    super() 
+
+    this.state = {
+      dogs: []
+    }
+  }
+
+  addDog = (dog) => {
+    console.log("addDogCalled!");
+    const dogs = this.state.dogs
+    dogs.push(dog)
+    this.setState({
+      dogs: dogs
+    })
+  }
 
   render() {
-    console.log("here is props in MainContainer");
-    console.log(this.props);
+    console.log("here is state in MainContainer");
+    console.log(this.state);
     return(
       <div>
         <h3>Hello you are logged in as {this.props.username}</h3>
         <button onClick={this.props.logout}> Logout </button>
 
-        <DogForm />
+        <DogForm addDog={this.addDog} />
       </div>
     )
 
