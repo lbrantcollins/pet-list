@@ -3,20 +3,26 @@
 // it will only show when the user is logged in
 
 import React from 'react'
+import DogForm from './DogForm'
 
-function MainContainer(props) {
+class MainContainer extends React.Component {
 
   // render a button below the div after the h3 that logs 
   // the user out by calling the logout function from props
 
-  console.log("here is props in MainContainer");
-  console.log(props);
-  return(
-    <div>
-      <h3>Hello you are logged in as {props.username}</h3>
-      <button onClick={props.logout}> Logout </button>
-    </div>
-  )
+  render() {
+    console.log("here is props in MainContainer");
+    console.log(this.props);
+    return(
+      <div>
+        <h3>Hello you are logged in as {this.props.username}</h3>
+        <button onClick={this.props.logout}> Logout </button>
+
+        <DogForm />
+      </div>
+    )
+
+  }
 
 }
 
