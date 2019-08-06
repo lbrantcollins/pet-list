@@ -25,16 +25,22 @@ class Login extends React.Component {
     })
   }
 
-
+  handleSubmit = (event) => {
+    event.preventDefault()
+    console.log("handleSubmit called"); 
+    this.props.login(this.state.username)   
+  }
 
   render() {
     // this is a good place to check that something is in state
-    console.log("this.state in render() in Login");
-    console.log(this.state);
+    // console.log("this.state in render() in Login:");
+    // console.log(this.state);
+    // console.log("this.props in render() in Login:");
+    // console.log(this.props);
     return (
       <div>
         <h2>Login</h2>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input 
             type="text" 
             name="username" 
