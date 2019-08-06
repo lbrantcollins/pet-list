@@ -1,3 +1,6 @@
+// this component only shows when the user is not logged in
+
+
 import React from 'react';
 
 
@@ -28,6 +31,9 @@ class Login extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault()
     console.log("handleSubmit called"); 
+    // allowing a child to manipulate a parent's state via
+    // a function that was passed down in props is called
+    // LIFTING up STATE
     this.props.login(this.state.username)   
   }
 

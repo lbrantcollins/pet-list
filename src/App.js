@@ -1,5 +1,6 @@
 import React from 'react';
 import Login from './Login';
+import MainContainer from './MainContainer'
 
 class App extends React.Component {
   
@@ -24,14 +25,15 @@ class App extends React.Component {
     })
   }
 
+
   render() {
     console.log("this.state in render() in App:");
     console.log(this.state);
     return (
       <div className="App">
         <h1>React Forms</h1>
-        <p>User's username will appear here when they are logged in</p>
-        <Login login={this.login} />
+        { this.state.loggedIn ? null : <Login login={this.login} /> }
+        { this.state.loggedIn ? <MainContainer username={this.state.username}/> : null }
       </div>
     );
   }
