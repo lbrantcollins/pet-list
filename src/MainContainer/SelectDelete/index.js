@@ -1,32 +1,27 @@
 import React from 'react';
 
-class SelectDelete extends React.Component {
+function SelectDelete(props) {
 
-	handleSelect = (event) => {
-		console.log("\nevent.currentTarget.value in handleSelect in SelectDelete");
-		console.log(event.currentTarget.value);
-		this.props.deleteDog(event.currentTarget.value);
+	function handleSelect (event) {
+		props.deleteDog(event.currentTarget.value);
 	}
 
-	render() {
+	if (props.dogs.length > 0) {
 
-		if (this.props.dogs.length > 0) {
-
-			const dogOptions = this.props.dogs.map( (dog, i) => {
-				return <option key={i}>{dog.name}</option>;
-			})
-	 		
-			return (
-			  	<div>
-			  		<p>Choose one dog to delete:</p>
-				  	<select size={this.props.dogs.length} onClick={this.handleSelect}> {dogOptions} </select>
-			  	</div>
-			  );
-		} else {
-			return null;
-		}
-
+		const dogOptions = props.dogs.map( (dog, i) => {
+			return <option key={i}>{dog.name}</option>;
+		})
+ 		
+		return (
+		  	<div>
+		  		<p>Choose one dog to delete:</p>
+			  	<select size={props.dogs.length} onClick={handleSelect}> {dogOptions} </select>
+		  	</div>
+		 );
+	} else {
+		return null;
 	}
+
 
 }
 

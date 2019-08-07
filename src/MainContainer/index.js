@@ -19,8 +19,7 @@ class MainContainer extends React.Component {
   }
 
   addDog = (dog) => {
-    console.log("addDogCalled!");
-    const dogs = this.state.dogs;
+    const dogs = this.state.dogs.slice();
     dogs.push(dog);
     this.setState({
       dogs: dogs
@@ -28,16 +27,10 @@ class MainContainer extends React.Component {
   }
 
   deleteDog = (name) => {
-    console.log("\ndeleteDog called with name: ", name);
-
     const dogs = this.state.dogs.slice();
-    console.log("\ndogs array before delete", dogs);
     const index = dogs.findIndex(dog => dog.name === name);
-    console.log("\nthe index of the name is:", index);
-    console.log("\ndeleteDog index", index);
     if (index !== -1) {
       dogs.splice(index, 1);
-      console.log("\ndogs array after delete", dogs);
       this.setState({
         dogs: dogs
       })
@@ -45,8 +38,6 @@ class MainContainer extends React.Component {
   }
 
   render() {
-    console.log("here is state in MainContainer");
-    console.log(this.state);
     return(
       <div>
         <h3>Hello you are logged in as {this.props.username}</h3>
@@ -55,8 +46,6 @@ class MainContainer extends React.Component {
         <DogForm addDog={this.addDog} />
         <PuppyList dogs={this.state.dogs} />
         <SelectDelete dogs={this.state.dogs} deleteDog={this.deleteDog} />
-
-        
       </div>
     )
 
