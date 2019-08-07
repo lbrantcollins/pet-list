@@ -6,7 +6,7 @@
 
 # This HW continues the in-class lab
 
-0. Review the lesson
+0. Review the [lesson](../lesson-readme.md)
 
 1. Review lab item 1
 
