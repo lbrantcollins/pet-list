@@ -8,4 +8,4 @@ function PuppyList(props) {
   return <ul> {puppies} </ul>
 }
 
-export default PuppyList
+export default PuppyList;

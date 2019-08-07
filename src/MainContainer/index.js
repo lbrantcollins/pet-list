@@ -18,8 +18,17 @@ class MainContainer extends React.Component {
 
   addDog = (dog) => {
     console.log("addDogCalled!");
-    const dogs = this.state.dogs
-    dogs.push(dog)
+    const dogs = this.state.dogs;
+    dogs.push(dog);
+    this.setState({
+      dogs: dogs
+    })
+  }
+
+  deleteDog = (index) => {
+    console.log("deleteDog called!");
+    const dogs = this.state.dogs;
+    dogs.slice(index, 1);
     this.setState({
       dogs: dogs
     })
@@ -33,8 +42,8 @@ class MainContainer extends React.Component {
         <h3>Hello you are logged in as {this.props.username}</h3>
         <button onClick={this.props.logout}> Logout </button>
 
-        <DogForm addDog={this.addDog} />
-        <PuppyList dogs={this.state.dogs} />
+        <DogForm addDog={this.addDog}  />
+        <PuppyList dogs={this.state.dogs} deleteDog={this.deleteDog}/>
 
         
       </div>
