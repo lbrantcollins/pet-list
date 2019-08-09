@@ -2,6 +2,8 @@
 
 
 import React from 'react';
+import 'semantic-ui-css/semantic.min.css';
+import { Button, Form, Container, Grid } from 'semantic-ui-react'
 
 
 // This is a container component because it is keeping track
@@ -44,27 +46,40 @@ class Login extends React.Component {
     // console.log("this.props in render() in Login:");
     // console.log(this.props);
     return (
-      <div>
-        <h2>Login</h2>
-        <form onSubmit={this.handleSubmit}>
-          <input 
-            type="text" 
-            name="username" 
-            value={this.state.username} 
-            placeholder="username"
-            onChange={this.handleChange}
-          />
-          <br />
-          <input 
-            type="password" 
-            name="password" 
-            value={this.state.password} 
-            placeholder="password" 
-            onChange={this.handleChange}
-          />
-          <br />
-          <button>Log in!</button>
-        </form>
+      <div >
+      <Container>
+    <Grid>
+        <Grid.Row centered>
+            <Grid.Column width={14}>
+        <Form  onSubmit={this.handleSubmit}>
+          <Form.Field>
+            <Form.Input 
+              label="Username"
+              width={8}
+              type="text" 
+              name="username" 
+              value={this.state.username} 
+              placeholder="username"
+              onChange={this.handleChange} 
+            />
+          </Form.Field>
+          <Form.Field>
+            <Form.Input 
+              label="Password"
+              width={8}
+              type="password" 
+              name="password" 
+              value={this.state.password} 
+              placeholder="password" 
+              onChange={this.handleChange} 
+            />
+          </Form.Field>
+          <Button type='submit'>Log In</Button>
+        </Form>
+        </Grid.Column>
+        </Grid.Row>
+    </Grid>
+</Container>
       </div>
     )
   }

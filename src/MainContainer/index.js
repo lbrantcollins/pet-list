@@ -6,6 +6,7 @@ import React from 'react'
 import DogForm from './DogForm'
 import PuppyList from './PuppyList'
 import SelectDelete from './SelectDelete'
+import 'semantic-ui-css/semantic.min.css';
 
 
 class MainContainer extends React.Component {
