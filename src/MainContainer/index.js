@@ -27,16 +27,18 @@ class MainContainer extends React.Component {
     })
   }
 
-  deleteDog = (name) => {
+  deleteDog = (index) => {
     const dogs = this.state.dogs.slice();
-    const index = dogs.findIndex(dog => dog.name === name);
-    if (index !== -1) {
+    // const index = dogs.findIndex(dog => dog.name === name);
+    // if (index !== -1) {
       dogs.splice(index, 1);
       this.setState({
         dogs: dogs
       })
-    }
+    // }
   }
+
+  // <SelectDelete dogs={this.state.dogs} deleteDog={this.deleteDog} />
 
   render() {
     return(
@@ -45,8 +47,8 @@ class MainContainer extends React.Component {
         <button onClick={this.props.logout}> Logout </button>
 
         <DogForm addDog={this.addDog} />
-        <PuppyList dogs={this.state.dogs} />
-        <SelectDelete dogs={this.state.dogs} deleteDog={this.deleteDog} />
+        <PuppyList dogs={this.state.dogs} deleteDog={this.deleteDog} />
+        
       </div>
     )
 

@@ -1,52 +1,37 @@
 import React from 'react';
-import { Select, Dropdown} from 'semantic-ui-react'
+import { Dropdown} from 'semantic-ui-react'
+// import 'semantic-ui-css/semantic.min.css';
+
+
+// , {key: props.dogs.length, text: "Click on a dog's name to delete", value: props.dogs.length}
 
 function SelectDelete(props) {
 
-	function handleSelect (event) {
+	 // {key: props.dogs.length, text: "Click to delete", value: props.dogs.length}
+
+	function handleSelect (event, data) {
 		event.preventDefault();
-		console.log("\nevent.currentTarget.value", event.currentTarget.value);
-		// props.deleteDog(event.currentTarget.value);
+		props.deleteDog(data.value);
 	}
 
 	if (props.dogs.length > 0) {
 
-		const dogs = [...props.dogs];
-		dogs.unshift({name: "--Choose one dog to delete--"});
-		console.log(dogs);
-
-		const dogOptions = dogs.map( (dog, i) => {
-			return (
-				<option key={i} value={i-1}>{dog.name}</option>
-			)
+		const dogOptionsObjects = props.dogs.map( (dog, i) => {
+			return ({
+				key: i,
+				text: dog.name,
+				value: i
+			})
 		})
- 		
- 	// 	const dogOptions = props.dogs.map( (dog, i) => {
- 	// 		const name = dog.name;
-		// 	return ({ 
-		// 		key: i, 
-		// 		value: i,
-		// 		text: name
-		// 	})
-		// })
- 		// const dogOptions = dogOpts.map( obj => {obj.text = obj.name})
-
-		// const dogOptions = [
-		// 	{key: 0, value: 0, ...props.dogs[0] },
-		// 	{key: 1, value: 1, text: "Bbbbb"},
-		// 	{key: 2, value: 2, text: "Ccccc"},
-		// ]
-		// console.log(dogOpts);
-		// console.log(dogOptions);
-
-// <p>Choose one dog to delete:</p>
-		  		// <Select placeholder = "-- Choose one dog to delete--" options={dogOptions} />
-
-		  		// <Select placeholder = "-- Choose one dog to delete--"  options={dogOptions} onSelect={handleSelect}/>
+		
+		const	dogOptions = [...dogOptionsObjects];
+				
+		// A dropdown is a bit dysfunctional when there is only one item on the list
 		return (
-		  	<div>
-			  	<select size={props.dogs.length+1} onClick={handleSelect}> {dogOptions} </select>
+			<div>
+				<Dropdown placeholder="Click on a dog's name to delete" options={dogOptions} onChange={handleSelect}/>
 		  	</div>
+
 		 );
 	} else {
 		return null;
