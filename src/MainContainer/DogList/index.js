@@ -1,9 +1,8 @@
 import React from 'react';
-import 'semantic-ui-css/semantic.min.css';
 import { List, Button } from 'semantic-ui-react'
 import '../../index.css'
 
-function PuppyList(props) {
+function DogList(props) {
 
 	function handleClickForDelete (event, data) {
 		event.preventDefault();
@@ -12,7 +11,7 @@ function PuppyList(props) {
 
 	function handleClickForEdit (event, data) {
 		event.preventDefault();
-		props.deleteDog(data.value);
+		props.requestEditForm(data.value);
 	}
 
 	const puppies = props.dogs.map((dog, i) => {
@@ -34,11 +33,11 @@ function PuppyList(props) {
   return (
 
   	<div>
-  		<List> {puppies} </List>
+  		<List className="dog-list"> {puppies} </List>
 	</div>
 
   );
 
 }
 
-export default PuppyList;
+export default DogList;

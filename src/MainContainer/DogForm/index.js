@@ -1,5 +1,6 @@
 import React from 'react'
-import 'semantic-ui-css/semantic.min.css';
+import {Form, Button, Label} from 'semantic-ui-react';
+import "../../index.css"
 
 class DogForm extends React.Component {
   constructor() {
@@ -31,16 +32,36 @@ class DogForm extends React.Component {
     return(
       <div>
         <h3>Add your dogs here, folks!</h3>
-        <form onSubmit={this.handleSubmit} >
-          <input type="text" name="name" value={this.state.name} placeholder="Enter a name" onChange={this.handleChange} />
-          <br />
-          <input type="number" name="age" value={this.state.age} placeholder="Enter age" onChange={this.handleChange} />
-          <br />
-          <input type="text" name="breed" value={this.state.breed} placeholder="Enter a breed" onChange={this.handleChange} />
-          <br />
-
-          <button>Add Dog</button> 
-        </form>
+        <Form className="dog-form" onSubmit={this.handleSubmit} >
+          <Form.Field>
+            <Form.Input 
+              type="text" 
+              name="name" 
+              placeholder="Enter a name"
+              value={this.state.name} 
+              onChange={this.handleChange} 
+            />
+          </Form.Field>
+          <Form.Field>
+            <Form.Input 
+              type="number" 
+              name="age" 
+              placeholder="Enter age"
+              value={this.state.age} 
+              onChange={this.handleChange} 
+            />
+          </Form.Field>
+          <Form.Field>
+            <Form.Input 
+              type="text" 
+              name="breed"
+              placeholder="Enter a breed" 
+              value={this.state.breed} 
+              onChange={this.handleChange}
+            />
+          </Form.Field>
+          <Button>Add Dog</Button> 
+        </Form>
 
       </div>
 

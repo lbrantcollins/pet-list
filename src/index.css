@@ -12,6 +12,15 @@ code {
     monospace;
 }
 
-.inline-button {
-	display: inline-block;
+.logout-button {
+  margin: 30px;
+}
+
+.dog-form {
+	width: 50%;
+	margin: 0 30px 30px 30px;
+}
+
+.dog-list {
+	margin: 30px;
 }

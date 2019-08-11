@@ -4,9 +4,10 @@
 
 import React from 'react'
 import DogForm from './DogForm'
-import PuppyList from './PuppyList'
-import SelectDelete from './SelectDelete'
-import 'semantic-ui-css/semantic.min.css';
+import DogList from './DogList'
+import EditForm from './EditForm'
+import {Button} from 'semantic-ui-react';
+
 
 
 class MainContainer extends React.Component {
@@ -15,7 +16,14 @@ class MainContainer extends React.Component {
     super() 
 
     this.state = {
-      dogs: []
+      dogs: [],
+      showEdit: false,
+      editIndex: null,
+      dogToEdit: {
+        name: '',
+        age: null,
+        breed: ''
+      }
     }
   }
 
@@ -29,8 +37,6 @@ class MainContainer extends React.Component {
 
   deleteDog = (index) => {
     const dogs = this.state.dogs.slice();
-    // const index = dogs.findIndex(dog => dog.name === name);
-    // if (index !== -1) {
       dogs.splice(index, 1);
       this.setState({
         dogs: dogs
@@ -38,16 +44,40 @@ class MainContainer extends React.Component {
     // }
   }
 
-  // <SelectDelete dogs={this.state.dogs} deleteDog={this.deleteDog} />
+  requestEditForm = (index) => {
+    console.log("inside the editDog function");
+    this.setState({
+      showEdit: true,
+      editIndex: index,
+      dogToEdit: {
+        name: this.state.dogs[index].name,
+        age: this.state.dogs[index].age,
+        breed: this.state.dogs[index].breed,
+      }
+
+    })
+      
+  }
+
+  updateDog = (dog) => {
+    console.log("inside updateDog function");
+    console.log("\nupdated dog --->", dog);
+
+  }
+
 
   render() {
+
     return(
+
       <div>
-        <h3>Hello you are logged in as {this.props.username}</h3>
-        <button onClick={this.props.logout}> Logout </button>
+
+        <h3>Hello, {this.props.username}.</h3>
+        <Button className="logout-button" onClick={this.props.logout}> Logout </Button>
 
         <DogForm addDog={this.addDog} />
-        <PuppyList dogs={this.state.dogs} deleteDog={this.deleteDog} />
+        <DogList dogs={this.state.dogs} deleteDog={this.deleteDog} requestEditForm={this.requestEditForm}/>
+        <EditForm showEdit={this.state.showEdit} dog={this.state.dogToEdit} updateDog={this.updateDog}/>
         
       </div>
     )
