@@ -34,12 +34,14 @@ class EditForm extends Component {
 			})
 		}
 		
-		this.props.updateDog(this.state, this.props.index)
+		this.props.updateDog(this.state)
 		this.setState({
 			name: '',
 			age: '',
 			breed: ''
 		})
+
+
   	}
 
 	handleChange = (event) => {

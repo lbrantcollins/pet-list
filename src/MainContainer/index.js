@@ -27,26 +27,26 @@ class MainContainer extends React.Component {
     }
   }
 
-  addDog = (dog) => {
+  addDog = async (dog) => {
     const dogs = this.state.dogs.slice();
     dogs.push(dog);
-    this.setState({
+    await this.setState({
       dogs: dogs
     })
   }
 
-  deleteDog = (index) => {
+  deleteDog = async (index) => {
     const dogs = this.state.dogs.slice();
       dogs.splice(index, 1);
-      this.setState({
+      await this.setState({
         dogs: dogs
       })
     // }
   }
 
-  requestEditForm = (index) => {
+  requestEditForm = async (index) => {
     console.log("inside the editDog function");
-    this.setState({
+    await this.setState({
       showEdit: true,
       editIndex: index,
       dogToEdit: {
@@ -59,9 +59,12 @@ class MainContainer extends React.Component {
       
   }
 
-  updateDog = (dog) => {
+  updateDog = async (dog) => {
     console.log("inside updateDog function");
     console.log("\nupdated dog --->", dog);
+    await this.setState({
+      showEdit: false,
+    })
 
   }
 
