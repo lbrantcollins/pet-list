@@ -14,7 +14,6 @@ class EditForm extends Component {
 
 	handleSubmit = async (event) => {
 		event.preventDefault();
-		console.log("\nthis.state in handleSubmit in ShowEdit", this.state);
 
 		// fill in values for fields the user did not change
 		// Note that this prevents the user from blanking out an existing entry
@@ -25,12 +24,12 @@ class EditForm extends Component {
 		}
 		if (this.state.age === '') {
 			await this.setState({
-				name: this.props.dog.age
+				age: this.props.dog.age
 			})
 		}
 		if (this.state.breed === '') {
 			await this.setState({
-				name: this.props.dog.breed
+				breed: this.props.dog.breed
 			})
 		}
 		
@@ -45,21 +44,12 @@ class EditForm extends Component {
   	}
 
 	handleChange = (event) => {
-		console.log("inside handleChange in ShowEdit");
 		this.setState({
       	[event.currentTarget.name]: event.currentTarget.value
     	})
 	}
 
 	render() {
-
-		console.log("inside the ShowEdit function");
-
-		// const dog = {
-		// 	name: this.props.dogs.name[i],
-		// 	age: this.props.age[i],
-		// 	breed: this.props.breed[i]
-		// }
 
 		if (this.props.showEdit) {
 			return (

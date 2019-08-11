@@ -42,8 +42,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("this.state in render() in App:");
-    console.log(this.state);
+
     return (
       <div className="App">
         
@@ -51,6 +50,7 @@ class App extends React.Component {
         { this.state.loggedIn ? <MainContainer logout={this.logout} username={this.state.username} /> : null }
       </div>
     );
+  
   }
 }
 

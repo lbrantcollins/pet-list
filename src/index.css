@@ -24,3 +24,7 @@ code {
 .dog-list {
 	margin: 30px;
 }
+
+.welcome {
+  display: inline-block;
+}

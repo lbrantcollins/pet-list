@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form, Button, Label} from 'semantic-ui-react';
+import {Form, Button} from 'semantic-ui-react';
 import "../../index.css"
 
 class DogForm extends React.Component {
@@ -31,7 +31,7 @@ class DogForm extends React.Component {
   render() {
     return(
       <div>
-        <h3>Add your dogs here, folks!</h3>
+        <h3>Add more dogs here</h3>
         <Form className="dog-form" onSubmit={this.handleSubmit} >
           <Form.Field>
             <Form.Input 

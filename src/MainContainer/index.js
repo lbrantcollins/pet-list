@@ -36,16 +36,14 @@ class MainContainer extends React.Component {
   }
 
   deleteDog = async (index) => {
-    const dogs = this.state.dogs.slice();
-      dogs.splice(index, 1);
-      await this.setState({
-        dogs: dogs
-      })
-    // }
+    const dogs = [...this.state.dogs];
+    dogs.splice(index, 1);
+    await this.setState({
+      dogs: dogs
+    })
   }
 
   requestEditForm = async (index) => {
-    console.log("inside the editDog function");
     await this.setState({
       showEdit: true,
       editIndex: index,
@@ -54,29 +52,29 @@ class MainContainer extends React.Component {
         age: this.state.dogs[index].age,
         breed: this.state.dogs[index].breed,
       }
-
-    })
-      
+    })     
   }
 
   updateDog = async (dog) => {
-    console.log("inside updateDog function");
-    console.log("\nupdated dog --->", dog);
+    const dogs = [...this.state.dogs];
+    dogs[this.state.editIndex] = dog;
     await this.setState({
       showEdit: false,
+      editIndex: null,
+      dogs: dogs
     })
-
   }
-
 
   render() {
 
     return(
 
       <div>
-
-        <h3>Hello, {this.props.username}.</h3>
-        <Button className="logout-button" onClick={this.props.logout}> Logout </Button>
+      
+        <div>
+          <h3 className="welcome">Hello, {this.props.username}.</h3>
+          <Button className="logout-button welcome" onClick={this.props.logout}> Logout </Button>
+        </div>
 
         <DogForm addDog={this.addDog} />
         <DogList dogs={this.state.dogs} deleteDog={this.deleteDog} requestEditForm={this.requestEditForm}/>
