@@ -40,7 +40,7 @@ class Login extends React.Component {
 
             <h2>Type anything here for username, password</h2>
 
-            <p>This is a "fake" login just to demonstrate 
+            <p>This is a fake "login" just to demonstrate 
             React conditional rendering upon login.</p>
 
             <Container>
