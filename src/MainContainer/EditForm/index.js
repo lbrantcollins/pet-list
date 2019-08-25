@@ -33,7 +33,9 @@ class EditForm extends Component {
 			})
 		}
 		
+		// lift up state
 		this.props.updateDog(this.state)
+
 		this.setState({
 			name: '',
 			age: '',
@@ -43,58 +45,71 @@ class EditForm extends Component {
 
   	}
 
+  	// keep state up-to-date as the form fills for any field 
 	handleChange = (event) => {
+
 		this.setState({
       	[event.currentTarget.name]: event.currentTarget.value
     	})
+
 	}
 
 	render() {
 
+		// conditionally render edit form
+		// only if edit button was clicked on the dog list
 		if (this.props.showEdit) {
+
 			return (
-			    <div>
+		    	<div>
 			      <h4> Edit the entry for {this.props.dog.name}</h4>
-			      <Form className="dog-form" onSubmit={this.handleSubmit} >
-			          <Form.Field>
+
+			      <Form className="dog-form" onSubmit={this.handleSubmit}>
+
+		          	<Form.Field>
 			          	<Label>Enter a new name
 				            <Form.Input 
-				              type="text" 
-				              name="name" 
-				              placeholder={this.props.dog.name}
-				              value={this.state.name} 
-				              onChange={this.handleChange} 
+				              	type="text" 
+				              	name="name" 
+				              	placeholder={this.props.dog.name}
+				              	value={this.state.name} 
+				              	onChange={this.handleChange} 
 				            />
 			            </Label>
-			          </Form.Field>
-			          <Form.Field>
+		          	</Form.Field>
+
+		          	<Form.Field>
 			          	<Label>Edit the age
 				            <Form.Input 
-				              type="number" 
-				              name="age" 
-				              placeholder={this.props.dog.age}
-				              value={this.state.age} 
-				              onChange={this.handleChange} 
+				              	type="number" 
+				              	name="age" 
+				              	placeholder={this.props.dog.age}
+				              	value={this.state.age} 
+				              	onChange={this.handleChange} 
 				            />
 			            </Label>
-			          </Form.Field>
-			          <Form.Field>
+		          	</Form.Field>
+
+		          	<Form.Field>
 			          	<Label>Change the breed
 				            <Form.Input 
-				              type="text" 
-				              name="breed"
-				              placeholder={this.props.dog.breed} 
-				              value={this.state.breed} 
-				              onChange={this.handleChange}
+				              	type="text" 
+				              	name="breed"
+				              	placeholder={this.props.dog.breed} 
+				              	value={this.state.breed} 
+				              	onChange={this.handleChange}
 				            />
 			            </Label>
-			          </Form.Field>
-			          <Button>Submit changes</Button> 
-			        </Form>
-			    </div>
+		          	</Form.Field>
+
+		          	<Button>Submit changes</Button> 
+		        	</Form>
+		    	</div>
 			);
 		} 
-			return null; 
+
+		// return nothing if edit form should not be rendered at this time
+		return null; 
 	}
 }
 

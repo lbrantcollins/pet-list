@@ -43,11 +43,16 @@ class App extends React.Component {
 
   render() {
 
+    // conditionally render login page (if not logged in)
+    // or main page (if logged in)
     return (
+
       <div className="App">
         
         { this.state.loggedIn ? null : <Login login={this.login} /> }
+
         { this.state.loggedIn ? <MainContainer logout={this.logout} username={this.state.username} /> : null }
+
       </div>
     );
   
