@@ -82,7 +82,7 @@ class DogForm extends React.Component {
                   />
                </Form.Field>
 
-               <Button>Add Dog</Button> 
+               <Button>Add Pet</Button> 
 
             </Form>
 

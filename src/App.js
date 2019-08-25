@@ -2,8 +2,6 @@ import React from 'react';
 import Login from './Login';
 import MainContainer from './MainContainer'
 
-import './App.css'
-
 class App extends React.Component {
   
   constructor() {
